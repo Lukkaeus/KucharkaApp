@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
@@ -27,9 +28,24 @@ class NakupnyZoznamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nakupny_zoznam)
 
+
         zoznamRecyclerView = findViewById(R.id.nakupnyZoznamRecyclerView)
         pridajPolozkuButton = findViewById(R.id.pridajPolozkuButton)
         polozkaEditText = findViewById(R.id.polozkaEditText)
+
+        class SwipeHelper : ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT){
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                viewModel.removePoznamka(viewHolder.adapterPosition)
+            }
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ) = false
+        }
+
+        ItemTouchHelper(SwipeHelper()).attachToRecyclerView(zoznamRecyclerView)
 
         //zoznamRecyclerView.layoutManager = LinearLayoutManager(this)
         zoznamRecyclerView.layoutManager = GridLayoutManager(this, 2)
@@ -46,7 +62,9 @@ class NakupnyZoznamActivity : AppCompatActivity() {
     fun onButtonClick(view: View) {
         val text = polozkaEditText.text.toString()
         viewModel.addPoznamka(text)
+        polozkaEditText.setText("")
     }
+
 
 
 }

@@ -21,6 +21,11 @@ class NakupnyZoznamViewModel(val state : SavedStateHandle) : ViewModel() {
         state.set("poznamky", newPoznamka)
     }
 
+    fun removePoznamka(position: Int){
+        val oldPoznamky = poznamky.value ?: emptyList()
+        state["poznamky"] = oldPoznamky - oldPoznamky.elementAt(position)
+    }
+
 
 
 }
