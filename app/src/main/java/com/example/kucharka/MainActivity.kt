@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
             when(it.itemId){
                 R.id.item1 -> startActivity(Intent(this, AddingReceptActivity::class.java))
-                R.id.item2 -> startActivity(Intent(this, UpdateReceptActivity::class.java))
+                R.id.item2 -> startActivity(Intent(this, NakupnyZoznamActivity::class.java))
                 R.id.item3 -> startActivity(Intent(this, AlergenyActivity::class.java))
             }
             true

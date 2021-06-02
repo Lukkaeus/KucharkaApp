@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/item2"
-        android:title="Ingrediencie"
+        android:title="Nákupný zoznam"
         android:icon="@drawable/ic_home"
         />
 
