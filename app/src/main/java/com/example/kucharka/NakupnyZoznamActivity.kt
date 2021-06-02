@@ -1,58 +1,52 @@
 package com.example.kucharka
 
-import android.graphics.Paint
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
 class NakupnyZoznamActivity : AppCompatActivity() {
+    lateinit var zoznamRecyclerView: RecyclerView
+    lateinit var pridajPolozkuButton: Button
+    lateinit var polozkaEditText: EditText
 
-    lateinit var mylist: ArrayList<String>
-    lateinit var myAdapter: ArrayAdapter<String>
-    lateinit var listView: ListView
-    lateinit var editText: EditText
-    lateinit var button: Button
+    val viewModel: NakupnyZoznamViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nakupny_zoznam)
 
-        mylist = ArrayList()
-        myAdapter = ArrayAdapter(this,R.layout.list_view_layout, mylist)
-        listView = findViewById(R.id.id_list_view)
+        zoznamRecyclerView = findViewById(R.id.nakupnyZoznamRecyclerView)
+        pridajPolozkuButton = findViewById(R.id.pridajPolozkuButton)
+        polozkaEditText = findViewById(R.id.polozkaEditText)
 
-        listView.adapter= myAdapter
+        //zoznamRecyclerView.layoutManager = LinearLayoutManager(this)
+        zoznamRecyclerView.layoutManager = GridLayoutManager(this, 2)
+        val adapter = NakupnyZoznamAdapter(this)
 
-        editText = findViewById(R.id.id_editTextListView)
-        button = findViewById(R.id.id_buttonListView)
+        zoznamRecyclerView.adapter = adapter
 
-        button.setOnClickListener{
-            mylist.add(editText.text.toString())
-            myAdapter.notifyDataSetChanged()
-
-            editText.setText("")
-        }
-
-        listView.setOnItemClickListener { parent, view, position, id ->
-            val textView : TextView = view as TextView
-            textView.paintFlags = textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        viewModel.poznamky.observe(this) {
+            adapter.submitList(it)
         }
 
     }
 
-
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//        outState.putStringArrayList("mylist", mylist)
-//    }
-//
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        this.mylist = savedInstanceState.getStringArrayList("myList") as ArrayList<String>
-//        this.myAdapter.notifyDataSetChanged()
-//        Toast.makeText(this, "Obnovila sa aktivita", Toast.LENGTH_LONG).show()
-//    }
+    fun onButtonClick(view: View) {
+        val text = polozkaEditText.text.toString()
+        viewModel.addPoznamka(text)
+    }
 
 
 }
