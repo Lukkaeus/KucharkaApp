@@ -1,9 +1,11 @@
-package com.example.kucharka
+package com.example.kucharka.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.kucharka.entities.Recept
+import com.example.kucharka.interfaces.ReceptDao
 
 
 // z appky Yellow

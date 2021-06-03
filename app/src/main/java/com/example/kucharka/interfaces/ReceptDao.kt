@@ -1,7 +1,8 @@
-package com.example.kucharka
+package com.example.kucharka.interfaces
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.kucharka.entities.Recept
 
 @Dao
 interface ReceptDao {

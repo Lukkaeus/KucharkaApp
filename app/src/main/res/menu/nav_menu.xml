@@ -3,20 +3,20 @@
 
     <item
         android:id="@+id/item1"
-        android:title="Pridaj recept"
-        android:icon="@drawable/ic_home"
+        android:title="Pridať recept"
+        android:icon="@drawable/ic_baseline_add_24"
         />
 
     <item
         android:id="@+id/item2"
-        android:title="Ingrediencie"
-        android:icon="@drawable/ic_home"
+        android:title="Nákupný zoznam"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
         />
 
     <item
         android:id="@+id/item3"
         android:title="Alergény"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_baseline_sick_24"
         />
 
 

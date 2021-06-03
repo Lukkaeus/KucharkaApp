@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NakupnyZoznamActivity">
+    tools:context=".activity.NakupnyZoznamActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nakupnyZoznamRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,12 +18,13 @@
 
     <EditText
         android:id="@+id/polozkaEditText"
-        android:layout_width="189dp"
-        android:layout_height="45dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Zadaj položku"
+        android:hint="Zadaj názov položky"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/pridajPolozkuButton"
         app:layout_constraintHorizontal_bias="0.079"
@@ -33,11 +35,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
         android:text="Pridaj"
         android:onClick="onButtonClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toStartOf="parent" />
 
 

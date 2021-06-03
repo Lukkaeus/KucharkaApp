@@ -16,14 +16,15 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.kucharka.MainActivity
 import com.example.kucharka.R
-import com.example.kucharka.Recept
-import com.example.kucharka.ReceptViewModel
+import com.example.kucharka.entities.Recept
+import com.example.kucharka.viewModels.ReceptViewModel
 import java.util.*
 
 class AddingReceptActivity : AppCompatActivity() {
     lateinit var addButton : Button
     lateinit var receptViewModel: ReceptViewModel
 
+    //premenne pre notifikáciu
     val CHANNEL_ID = "channel_id"
     val notificationId = 101
 
@@ -31,10 +32,12 @@ class AddingReceptActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_recept)
 
+
+        supportActionBar?.setTitle("Pridávanie nového receptu")
+
         receptViewModel = ViewModelProvider(this).get(ReceptViewModel::class.java)
-
-
         addButton = findViewById(R.id.pridajReceptButton)
+
         addButton.setOnClickListener{
             vlozenieDoDatabazy()
         }
@@ -77,8 +80,8 @@ class AddingReceptActivity : AppCompatActivity() {
 
     private fun createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val name = "Notification Title"
-            val descriptionText = "Notification Description"
+            val name = "Notifikácia"
+            val descriptionText = ""
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID,name,importance).apply {
                 description = descriptionText

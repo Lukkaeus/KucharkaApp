@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kucharka.activity.ReceptActivity
+import com.example.kucharka.entities.Recept
 
 object ReceptDiff : DiffUtil.ItemCallback<Recept>(){
     override fun areItemsTheSame(oldItem: Recept, newItem: Recept): Boolean {
@@ -24,7 +26,7 @@ class ReceptViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(recept: Recept, context: Context){
         text1.setOnClickListener{
-            val intent = Intent(context,ReceptActivity::class.java)
+            val intent = Intent(context, ReceptActivity::class.java)
             intent.putExtra("recept", recept)
             context.startActivity(intent)
         }
@@ -36,7 +38,6 @@ class ReceptViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 class ReceptListAdapter(private val context: Context) : androidx.recyclerview.widget.ListAdapter<Recept, ReceptViewHolder>(ReceptDiff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReceptViewHolder {
-//        val layout = LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false)
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.recepty_list_item, parent, false)
 
         return ReceptViewHolder(layout)

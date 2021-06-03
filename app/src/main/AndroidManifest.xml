@@ -11,11 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kucharka">
-        <activity android:name=".NakupnyZoznamActivity"></activity>
-        <activity android:name=".AlergenyActivity" />
-        <activity android:name=".UpdateReceptActivity" />
+        <activity android:name=".activity.NakupnyZoznamActivity"></activity>
+        <activity android:name=".activity.AlergenyActivity" />
+        <activity android:name=".activity.UpdateReceptActivity" />
         <activity android:name=".activity.AddingReceptActivity" />
-        <activity android:name=".ReceptActivity" />
+        <activity android:name=".activity.ReceptActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

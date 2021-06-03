@@ -1,14 +1,14 @@
-package com.example.kucharka
+package com.example.kucharka.viewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.example.kucharka.room.AppDatabase
+import com.example.kucharka.entities.Recept
 
 class ReceptViewModel(application: Application) : AndroidViewModel(application) {
     val appDatabase = AppDatabase(application)
     val receptDao = appDatabase.receptDao()
-
-    //...
 
 
     fun getRecepty(): LiveData<List<Recept>> {

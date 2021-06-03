@@ -1,8 +1,9 @@
-package com.example.kucharka
+package com.example.kucharka.viewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.example.kucharka.Poznamka
 import java.util.*
 
 //state dokáže prežiť reštart aktivity, aj odchod na pozadie

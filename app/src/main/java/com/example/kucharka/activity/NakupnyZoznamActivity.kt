@@ -1,20 +1,17 @@
-package com.example.kucharka
+package com.example.kucharka.activity
 
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import java.util.*
+import com.example.kucharka.NakupnyZoznamAdapter
+import com.example.kucharka.viewModels.NakupnyZoznamViewModel
+import com.example.kucharka.R
 
 class NakupnyZoznamActivity : AppCompatActivity() {
     lateinit var zoznamRecyclerView: RecyclerView
@@ -49,7 +46,7 @@ class NakupnyZoznamActivity : AppCompatActivity() {
 
         //zoznamRecyclerView.layoutManager = LinearLayoutManager(this)
         zoznamRecyclerView.layoutManager = GridLayoutManager(this, 2)
-        val adapter = NakupnyZoznamAdapter(this)
+        val adapter = NakupnyZoznamAdapter()
 
         zoznamRecyclerView.adapter = adapter
 

@@ -31,12 +31,12 @@ object NakupnyZoznamDiff: DiffUtil.ItemCallback<Poznamka>(){
 
 class NakupnyZoznamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     val nakupnyZoznamTextView : TextView = itemView.findViewById(R.id.nakupnyZoznamTextView)
-    fun bind(poznamka: Poznamka,context : Context){
+    fun bind(poznamka: Poznamka){
         nakupnyZoznamTextView.text = poznamka.poznamka
     }
 }
 
-class NakupnyZoznamAdapter(private val context: Context) : ListAdapter<Poznamka, NakupnyZoznamViewHolder>(NakupnyZoznamDiff){
+class NakupnyZoznamAdapter : ListAdapter<Poznamka, NakupnyZoznamViewHolder>(NakupnyZoznamDiff){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NakupnyZoznamViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.nakupny_zoznam_list_item, parent, false)
 
@@ -44,6 +44,6 @@ class NakupnyZoznamAdapter(private val context: Context) : ListAdapter<Poznamka,
     }
 
     override fun onBindViewHolder(holder: NakupnyZoznamViewHolder, position: Int) {
-        holder.bind(getItem(position),context )
+        holder.bind(getItem(position))
     }
 }

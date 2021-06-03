@@ -1,4 +1,4 @@
-package com.example.kucharka
+package com.example.kucharka.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,10 +11,13 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
+import com.example.kucharka.MainActivity
+import com.example.kucharka.R
+import com.example.kucharka.entities.Recept
+import com.example.kucharka.viewModels.ReceptViewModel
 
 
 class UpdateReceptActivity : AppCompatActivity() {
-
     lateinit var addButton : Button
     lateinit var receptViewModel: ReceptViewModel
 
@@ -67,15 +70,16 @@ class UpdateReceptActivity : AppCompatActivity() {
         val ingrediencie = editTextIngrediencie.text.toString()
         val postup = editTextPostup.text.toString()
 
+        //ak su vyplnene všetky povinne polia robime update
         if(suPoliaPrazdne(nazov,postup,ingrediencie)){
             val updatnutyRecept = Recept(recept.id,recept.timestamp,
                                         nazov, "", dlzkaPripravy,
                                         objemKalorii, ingrediencie, postup, recept.poznamky)
 
             receptViewModel.update(updatnutyRecept)
-            Toast.makeText(this, "Recept bol úspešne upravený", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Recept ${recept.nazov} bol úspešne upravený ", Toast.LENGTH_LONG).show()
 
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             this.startActivity(intent)
         } else {
             Toast.makeText(this, "Prosím vyplňte všetky povinné textové polia", Toast.LENGTH_LONG).show()
